@@ -526,22 +526,27 @@ body {
     position: relative;
 }
 
-.image-placeholder {
+.profile-image {
     width: 350px;
     height: 350px;
     border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    position: relative;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 10rem;
-    box-shadow: var(--shadow-xl);
-    position: relative;
-    overflow: hidden;
 }
 
-.image-placeholder::before {
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.profile-image::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -550,6 +555,7 @@ body {
     height: 200%;
     background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
     animation: shimmer 3s infinite;
+    z-index: 1;
 }
 
 @keyframes shimmer {
@@ -709,7 +715,7 @@ section {
 
 .highlight-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     padding: 1.5rem;
     background: white;
@@ -733,6 +739,11 @@ section {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.highlight-item div {
+    flex: 1;
 }
 
 .highlight-item h4 {
@@ -743,6 +754,13 @@ section {
 .highlight-item p {
     color: var(--text-secondary);
     font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.date {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    font-style: italic;
 }
 
 .about-stats {
@@ -824,7 +842,7 @@ section {
     visibility: hidden;
     transition: var(--transition);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -858,6 +876,7 @@ section {
     align-items: center;
     justify-content: center;
     font-size: 2rem;
+    flex-shrink: 0;
 }
 
 .skill-info {
@@ -866,24 +885,7 @@ section {
 
 .skill-info h4 {
     color: var(--text-primary);
-    margin-bottom: 0.75rem;
     font-size: 1.1rem;
-}
-
-.skill-bar {
-    width: 100%;
-    height: 8px;
-    background: var(--bg-tertiary);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    border-radius: 4px;
-    width: 0;
-    transition: width 1s ease-in-out;
 }
 
 /* Projects Section */
@@ -1639,10 +1641,9 @@ section {
         gap: 0.5rem;
     }
 
-    .image-placeholder {
+    .profile-image {
         width: 280px;
         height: 280px;
-        font-size: 8rem;
     }
 }
 
@@ -1675,10 +1676,9 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .image-placeholder {
+    .profile-image {
         width: 250px;
         height: 250px;
-        font-size: 6rem;
     }
 
     .tech-icon {
